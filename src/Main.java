@@ -1,19 +1,31 @@
-import Entity.Liquid;
-import Utils.Factory;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.metadata.ClassMetadata;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import com.sun.org.apache.xpath.internal.SourceTree;
+import objects.Bottle;
+import tables.Liquids;
+import utils.DBConnection;
+import utils.Worker;
 
-import java.util.Map;
+import javax.xml.bind.SchemaOutputResolver;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(final String[] args) throws Exception {
-        Factory.setLiquidDAO(new Liquid("atmose", 30));
+        DBConnection dbConnection = new DBConnection();
+        Liquids liquids = new Liquids(dbConnection.getConnection());
+        ArrayList<Bottle> bottles = new ArrayList<>(liquids.getLiquds());
+
+        Scanner in = new Scanner(System.in);
+        int choice = 1;
+        while (choice != 0) {
+            if (choice == 1) {
+                Worker.printLiquidList(bottles);
+            } else if (choice == 2) {
+                Worker.addBottleAtList(bottles, liquids, new Bottle(in.next(), in.nextInt()));
+            }
+            choice = in.nextInt();
+        }
+
     }
 }
