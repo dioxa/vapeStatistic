@@ -2,22 +2,22 @@ package utils;
 
 
 import objects.Bottle;
-import tables.Liquids;
+import tables.LiquidsDao;
 
 import java.util.ArrayList;
 
-public class Worker {
+public class CoreUtils {
 
     public static void printLiquidList (ArrayList<Bottle> bottles) {
         if (!bottles.isEmpty()) {
             for (Bottle bottle : bottles) {
-                System.out.println(bottle.forPrint());
+                System.out.println(bottle);
             }
         }
     }
 
-    public static void addBottleAtList (ArrayList<Bottle> bottles, Liquids liquids, Bottle newBottle) {
-        if (liquids.addLiquid(bottles.size(), newBottle)) {
+    public static void addBottleAtList (ArrayList<Bottle> bottles, LiquidsDao liquidsDao, Bottle newBottle) {
+        if (liquidsDao.addLiquid(bottles.size(), newBottle)) {
             bottles.add(newBottle);
             System.out.println("Жидкость успешно добавленна");
         } else {

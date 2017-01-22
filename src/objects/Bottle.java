@@ -1,6 +1,6 @@
 package objects;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Bottle {
 
@@ -9,17 +9,18 @@ public class Bottle {
 
     private int capacity;
 
-    private LocalDateTime dateBuy;
+    private LocalDate dateBuy;
 
-    private LocalDateTime dateClose;
+    private LocalDate dateClose;
 
-    public Bottle(String name, int capacity) {
+    public Bottle(String name, int capacity, LocalDate dateBuy) {
         this.name = name;
         this.capacity = capacity;
+        this.dateBuy = dateBuy;
     }
 
-    public String forPrint() {
-        return name + " " + capacity;
+    public String toString() {
+        return name + " " + capacity + " " + dateBuy;
     }
 
     public String getName() {
@@ -30,11 +31,11 @@ public class Bottle {
         return capacity;
     }
 
-    public LocalDateTime getDateBuy() {
+    public LocalDate getDateBuy() {
         return dateBuy;
     }
 
-    public LocalDateTime getDateClose() {
+    public LocalDate getDateClose() {
         return dateClose;
     }
 }
