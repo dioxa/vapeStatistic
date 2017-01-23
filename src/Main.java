@@ -22,9 +22,13 @@ public class Main {
             } else if (choice == 2) {
                 CoreUtils.addBottleAtList(bottles, liquidsDao, new Bottle(in.next(), in.nextInt(),
                         LocalDate.of(in.nextInt(), in.nextInt(), in.nextInt())));
+            } else if (choice == 3) {
+                CoreUtils.setDateClose(bottles, liquidsDao, in.nextInt(),
+                        LocalDate.of(in.nextInt(), in.nextInt(), in.nextInt()));
+            } else if (choice == 4) {
+                System.out.println(CoreUtils.getAvarageOfLiquid(bottles));
             }
             choice = in.nextInt();
         }
-
     }
 }

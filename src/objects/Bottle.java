@@ -11,7 +11,7 @@ public class Bottle {
 
     private LocalDate dateBuy;
 
-    private LocalDate dateClose;
+    private LocalDate dateClose = null;
 
     public Bottle(String name, int capacity, LocalDate dateBuy) {
         this.name = name;
@@ -19,8 +19,15 @@ public class Bottle {
         this.dateBuy = dateBuy;
     }
 
+    public Bottle(String name, int capacity, LocalDate dateBuy, LocalDate dateClose) {
+        this.name = name;
+        this.capacity = capacity;
+        this.dateBuy = dateBuy;
+        this.dateClose = dateClose;
+    }
+
     public String toString() {
-        return name + " " + capacity + " " + dateBuy;
+        return name + " " + capacity + " " + dateBuy + " " + dateClose;
     }
 
     public String getName() {
@@ -37,5 +44,9 @@ public class Bottle {
 
     public LocalDate getDateClose() {
         return dateClose;
+    }
+
+    public void setDateClose(LocalDate dateClose) {
+        this.dateClose = dateClose;
     }
 }
